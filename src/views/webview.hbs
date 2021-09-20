@@ -1,0 +1,172 @@
+<html lang="en">
+
+    <head>
+        <title>{{query.windowTitle}}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq =
+            function () { n.callMethod ? n.callMethod.apply(n, arguments) :
+            n.queue.push(arguments) }; if (!f._fbq) f._fbq = n; n.push = n;
+            n.loaded = !0; n.version = '2.0'; n.queue = []; t =
+            b.createElement(e); t.async = !0; t.src = v; s =
+            b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+            }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js'); fbq('init',
+            {{fbPixelId}}); fbq('track', 'PageView'); fbq('track',
+            'ViewContent', { content_name: 'Chatfuel Scheduling', referrer:
+            document.referrer, userAgent: navigator.userAgent, language:
+            navigator.language });
+        </script>
+        <noscript><img
+                height="1"
+                width="1"
+                style="display:none"
+                src="https://www.facebook.com/tr?id={{fbPixelId}}&ev=PageView&noscript=1"
+            /></noscript>
+        <!-- End Facebook Pixel Code -->
+
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"
+        ></script>
+
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:400,500,700"
+        />
+        <link
+            rel="stylesheet"
+            href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css"
+        />
+        <link rel="stylesheet" href="/css/style.css" />
+        <style>
+            thead, thead tr, thead tr th, .datepicker .datepicker-switch:hover,
+            a.next, a.done { background: { { hex } } ; } .datepicker
+            .prev:hover, .datepicker .next:hover, .datepicker tfoot tr th:hover,
+            a.next:hover, a.done:hover, a.done.clickable:focus,
+            li.ui-timepicker-selected, li.ui-timepicker-selected
+            .ui-timepicker-duration, li:hover, .ui-timepicker-list
+            .ui-timepicker-selected:hover { background: { { hexHover } } ; }
+            .datepicker table tr td.active.highlighted:active, .datepicker table
+            tr td.active.active, .datepicker table tr
+            td.active.highlighted.active, .datepicker table tr td.active:active,
+            .datepicker table tr td.active.highlighted:active:hover, .datepicker
+            table tr td.active.highlighted:active:focus, .datepicker table tr
+            td.active.highlighted:active.focus, .datepicker table tr
+            td.active.active:hover, .datepicker table tr td.active.active:focus,
+            .datepicker table tr td.active.active.focus, .datepicker table tr
+            td.active.highlighted.active:hover, .datepicker table tr
+            td.active.highlighted.active:focus, .datepicker table tr
+            td.active.highlighted.active.focus, .datepicker table tr
+            td.active:active:hover, .datepicker table tr td.active:active:focus,
+            .datepicker table tr td.active:active.focus, .datepicker table tr
+            td.today:active, .datepicker table tr td.today.active, .datepicker
+            table tr td.today:active:hover, .datepicker table tr
+            td.today.active:hover { background-color: { { hexHover } } ; }
+            .datepicker table tr td.today::after, .above_timepicker
+            .back_to_datepicker p { color: { { hex } } ; }
+        </style>
+
+    </head>
+
+    <body>
+        <script type="text/javascript">
+            // required - messenger javascript extensions (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0]; if
+            (d.getElementById(id)) { return; } js = d.createElement(s); js.id =
+            id; js.src = "//connect.facebook.com/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs); }(document, 'script',
+            'Messenger'));
+        </script>
+        <script>
+            var query =
+            {{{json query}}};
+        </script>
+        <div class="pre-con">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <form id="datetime">
+                        <article id="page_1">
+                            <label>{{query.calendarHeading}}</label>
+                            <div id="W1" class="warning">
+                                <p>A selection is required</p>
+                            </div>
+                            <input
+                                type="hidden"
+                                id="selected_date"
+                                required="true"
+                            />
+                            <div id="datepicker">
+                            </div>
+                        </article>
+                        <article id="page_2">
+                            <div class="timepicker">
+                                <div class="above_timepicker">
+                                    <div class="back_to_datepicker">
+                                        <p>{{query.backButton}}</p>
+                                    </div>
+                                    <div class="user_timezone"></div>
+                                </div>
+                                <div class="timestart">
+                                    <label>{{query.timeStartLabel}}</label>
+                                    <div id="W2" class="warning">
+                                        <p>A selection is required</p>
+                                    </div>
+                                    <input type="text" id="time_start" />
+                                </div>
+                                <div class="timeend">
+                                    <label>{{query.timeEndLabel}}</label>
+                                    <div id="W3" class="warning">
+                                        <p>A selection is required</p>
+                                    </div>
+                                    <input
+                                        type="text"
+                                        id="time_end"
+                                        disabled="true"
+                                    />
+                                </div>
+                            </div>
+                            <a class="done" href="#">{{query.doneButton}}</a>
+                        </article>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="footer text-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>const idArr = ['efHon29OIndalqwhh12093laSDonl']; if
+            (idArr.includes(query.premiumId)) { jQuery('.footer p').hide(); }</script>
+        <script src="/js/vendor/bootstrap.min.js"></script>
+        <script
+            src="https://kit.fontawesome.com/4535668e15.js"
+            crossorigin="anonymous"
+        ></script>
+        <script src="/js/vendor/moment.min.js"></script>
+        <script src="/js/vendor/moment-timezone.min.js"></script>
+        <script src="/js/vendor/moment-timezone-with-data.min.js"></script>
+        <script src="/js/vendor/bootstrap-datepicker.min.js"></script>
+        <script
+            src="/js/vendor/locales/bootstrap-datepicker.{{query.language}}.min.js"
+        ></script>
+        <script src="/js/vendor/jquery.timepicker.js"></script>
+        <script src="/js/vendor/Tocca.min.js"></script>
+        <script src="/js/main.js"></script>
+    </body>
+
+</html>

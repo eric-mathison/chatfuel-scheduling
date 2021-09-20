@@ -1,0 +1,51 @@
+{
+    "name": "chatfuel-scheduling",
+    "version": "1.0.0",
+    "description": "A Scheduling Webview and Api for Chatfuel that uses Google Calendar",
+    "main": "index.js",
+    "author": "Eric Mathison <eric.l.mathison@gmail.com>",
+    "scripts": {
+        "start": "node dist/index.js",
+        "dev": "npm run lint && npm run babel && npm run scss && npm run copy && npm run webpack",
+        "watch": "nodemon dist/index.js -w src --exec \"npm run dev & npm start\"",
+        "release": "npm run lint && npm run babel && npm run scss && npm run copy && npm run webpack -p",
+        "babel": "babel src -d dist --ignore .min.js,datetimeform.js,app.js",
+        "copy": "cpx \"src/public/js/**/*.min.js\" \"dist/public/js\" && cpx \"src/views/*\" \"dist/views\" && cpx \"src/*.json\" \"dist\" && cpx \"src/public/images/*\" \"dist/public/images\"",
+        "lint": "eslint src",
+        "scss": "node-sass -o dist/public/css src/public/scss",
+        "webpack": "webpack"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^0.21.4",
+        "babel-polyfill": "^6.26.0",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "fs": "0.0.1-security",
+        "googleapis": "^87.0.0",
+        "hbs": "^4.1.2",
+        "isemail": "^3.2.0",
+        "moment": "^2.29.1",
+        "moment-timezone": "^0.5.33",
+        "morgan": "^1.10.0",
+        "prettier": "^2.4.1",
+        "winston": "^3.3.3"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.15.4",
+        "@babel/core": "^7.15.5",
+        "@babel/preset-env": "^7.15.6",
+        "babel-loader": "^8.2.2",
+        "cpx": "^1.5.0",
+        "css-loader": "^6.2.0",
+        "eslint": "^7.32.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.24.2",
+        "node-sass": "^6.0.1",
+        "sass-loader": "^12.1.0",
+        "style-loader": "^3.2.1",
+        "webpack": "^5.53.0",
+        "webpack-cli": "^4.8.0"
+    }
+}
